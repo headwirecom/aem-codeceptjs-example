@@ -1,12 +1,8 @@
 Feature("Administering pages in AEM");
 
 Scenario("Enter the Sites", (I) => {
-	I.amOnPage("http://localhost:4502");
-
-	I.see("Sign In", "#sign-in-title");
-	I.fillField("#username", "admin");
-	I.fillField("#password", "admin");
-	I.pressKey("Enter");
+	I.amOnAuthor();
+	I.signIn("admin", "admin");
 
 	I.see("Projects", ".globalnav-homecard-title");
 	I.see("Sites", ".globalnav-homecard-title");
@@ -18,7 +14,5 @@ Scenario("Enter the Sites", (I) => {
 	I.see("Commerce", ".globalnav-homecard-title");
 	I.see("Communities", ".globalnav-homecard-title");
 
-	I.click({"xpath": "//*[@id="globalnav-start-home-collection"]/coral-masonry-item[2]"});
-
-	pause();
+	I.click({"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
 });
