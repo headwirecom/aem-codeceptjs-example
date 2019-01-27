@@ -1,6 +1,10 @@
 module.exports = function() {
   return actor({
 
+	enter: function() {
+		this.pressKey("Enter");
+	},
+
 	amOnAuthor: function(path = "") {
 		if (!path.startsWith("/")) {
 			path = "/" + path;
@@ -10,10 +14,9 @@ module.exports = function() {
 	},
 
 	signIn: function(username = "admin", password = "admin") {
-		this.see("Sign In", "#sign-in-title");
 		this.fillField("#username", username);
 		this.fillField("#password", password);
-		this.pressKey("Enter");
+		this.enter();
 	}
 
   });

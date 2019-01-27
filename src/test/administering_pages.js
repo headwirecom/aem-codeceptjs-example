@@ -1,6 +1,11 @@
 Feature("Administering pages in AEM");
 
-Scenario("Enter AEM Start", (I) => {
+Scenario("Open Sign In page", I => {
+	I.amOnAuthor();
+	I.see("Sign In", "#sign-in-title");
+});
+
+Scenario("Enter AEM Start", I => {
 	I.amOnAuthor();
 	I.signIn();
 
