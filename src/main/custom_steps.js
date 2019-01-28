@@ -1,7 +1,7 @@
 module.exports = function() {
   return actor({
 
-	enter: function() {
+	pressEnter: function() {
 		this.pressKey("Enter");
 	},
 
@@ -16,7 +16,7 @@ module.exports = function() {
 	signIn: function(username = "admin", password = "admin") {
 		this.fillField("#username", username);
 		this.fillField("#password", password);
-		this.enter();
+		this.pressEnter();
 	}
 
   });
