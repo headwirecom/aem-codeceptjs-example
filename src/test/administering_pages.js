@@ -7,12 +7,10 @@ Before((sitesPage, loginPage) => {
 
 let parentPagePath = "/content/we-retail/language-masters/en";
 
-Scenario("Navigate to 'Create Page' wizard", (I, createPageWizardPage) => {
-	I.click({'xpath': '//coral-columnview-item[4]'});
-	I.pressRight(2);
-	I.click('Create', '.granite-collection-create');
-	I.click('Page', '.cq-siteadmin-admin-createpage');
-
+Scenario("Navigate to 'Create Page' wizard", (sitesPage, createPageWizardPage) => {
+	sitesPage.switchToListView();
+	sitesPage.navigateTo(['We.Retail', 'Language Master', 'English']);
+	sitesPage.gotoCreatePageWizard();
 	createPageWizardPage.validate(parentPagePath);
 });
 

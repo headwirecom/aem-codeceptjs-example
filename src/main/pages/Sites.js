@@ -14,5 +14,23 @@ module.exports = {
 
 	open(path = "") {
 		I.amOnAuthor(this.url + path);
+	},
+
+	switchToListView() {
+		I.click("#granite-collection-switcher-toggle");
+		I.pressTab();
+		I.pressDown(2);
+		I.pressEnter();
+	},
+
+	navigateTo(pageTitles) {
+		for(let i = 0; i < pageTitles.length; i++) {
+			I.click(pageTitles[i]);
+		}
+	},
+
+	gotoCreatePageWizard() {
+		I.click("Create", ".granite-collection-create");
+		I.click("Page", ".cq-siteadmin-admin-createpage");
 	}
 }
