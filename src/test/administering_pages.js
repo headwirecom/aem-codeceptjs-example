@@ -2,12 +2,16 @@ Feature("Administering pages in AEM");
 
 Scenario("Open Sign In page", I => {
 	I.amOnAuthor();
+
+	I.seeTitleEquals("AEM Sign In");
 	I.see("Sign In", "#sign-in-title");
 });
 
 Scenario("Enter AEM Start", I => {
 	I.amOnAuthor();
 	I.signIn();
+
+	I.seeTitleEquals("AEM Start");
 
 	let locator = ".globalnav-homecard-title";
 	I.see("Projects", locator);
