@@ -18,5 +18,21 @@ module.exports = {
 
 	open(path = "") {
 		I.amOnAuthor(this.url + path);
+	},
+
+	create(title, name = "") {
+		I.click('Content Page', '.foundation-collection-item');
+		I.click('Next');
+		I.pressTab(3);
+		I.type(title);
+		I.pressTab();
+		I.type(name);
+		I.pressEnter();
+	},
+
+	validateCreated() {
+		I.see("Success");
+		I.see("Your page has been created.");
 	}
+
 }
