@@ -1,7 +1,7 @@
 Feature("Signing In to AEM");
 
-Before(I => {
-	I.amOnAuthor();
+Before(loginPage => {
+	loginPage.open();
 });
 
 Scenario("Open 'Sign In' page", loginPage => {
