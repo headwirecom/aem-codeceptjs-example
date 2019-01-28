@@ -55,3 +55,19 @@ Scenario("Navigate to 'Create Page' wizard", I => {
 	I.see("Create Page");
 	I.see("Content Page");
 });
+
+Scenario("Create 'My Page' test page", I => {
+	I.amOnAuthor("/mnt/overlay/wcm/core/content/sites/createpagewizard.html/content/we-retail/language-masters/en");
+	I.signIn();
+
+	I.click('Content Page', '.foundation-collection-item');
+	I.click('Next');
+	I.pressTab(3);
+	I.type('My Page');
+	I.pressTab();
+	I.type('mypage');
+	I.pressEnter();
+	
+	I.see("Success");
+	I.see("Your page has been created.");
+});

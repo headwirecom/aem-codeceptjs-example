@@ -11,6 +11,12 @@ module.exports = function() {
 		this.pressKey("Enter");
 	},
 
+	pressTab: function(times = 1) {
+		for (var i = 0; i < times; i++) {
+		  this.pressKey("Tab");
+		}
+	},
+
 	pressRight: function(times = 1) {
 		for (var i = 0; i < times; i++) {
 		  this.pressKey("ArrowRight");
