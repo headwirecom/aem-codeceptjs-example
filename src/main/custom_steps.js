@@ -29,12 +29,6 @@ module.exports = function() {
 		}
 
 		this.amOnPage("http://localhost:4502" + path);
-	},
-
-	signIn: function(username = "admin", password = "admin") {
-		this.fillField("#username", username);
-		this.fillField("#password", password);
-		this.pressEnter();
 	}
 
   });

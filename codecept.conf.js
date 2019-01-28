@@ -14,7 +14,8 @@ exports.config = {
     }
   },
   include: {
-    I: './src/main/custom_steps.js'
+    I: './src/main/custom_steps.js',
+	loginPage: './src/main/pages/Login.js'
   },
   bootstrap: null,
   mocha: {},
