@@ -7,8 +7,8 @@ module.exports = {
 	// insert your locators and methods here
 
 	validate() {
-		I.seeTitleEquals("AEM Sites");
 		I.seeInCurrentUrl(this.url);
+		I.seeTitleEquals("AEM Sites");
 		I.see("Sites");
 	},
 

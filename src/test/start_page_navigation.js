@@ -1,7 +1,7 @@
 Feature("Navigation from 'Start Page'");
 
-Before((I, loginPage) => {
-	I.amOnAuthor();
+Before((startPage, loginPage) => {
+	startPage.open();
     loginPage.signIn();
 });
 

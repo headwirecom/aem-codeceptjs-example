@@ -2,9 +2,12 @@ const I = require('../custom_steps.js')();
 
 module.exports = {
 
+	url: "/aem/start.html",
+
 	// insert your locators and methods here
 
 	validate() {
+		I.seeInCurrentUrl(this.url);
 		I.seeTitleEquals("AEM Start");
 
 		let locator = ".globalnav-homecard-title";
@@ -17,6 +20,10 @@ module.exports = {
 		I.see("Personalization", locator);
 		I.see("Commerce", locator);
 		I.see("Communities", locator);
+	},
+
+	open() {
+		I.amOnAuthor(this.url);
 	},
 
 	gotoSites() {
