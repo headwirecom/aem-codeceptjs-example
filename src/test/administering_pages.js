@@ -29,7 +29,9 @@ Scenario("Enter Sites", I => {
 	I.amOnAuthor();
 	I.signIn();
 
-	I.click({"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
+	// This locator is not the best. It's too specific, but 'click' seems not to work with coral elements
+	// It would need to be investigated further as such code will quickly become unmaintainable.
+	I.click("Sites", {"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
 
 	I.seeTitleEquals("AEM Sites");
 	I.seeCurrentUrlEquals("http://localhost:4502/sites.html/content");
