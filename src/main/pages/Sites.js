@@ -2,17 +2,17 @@ const I = require('../custom_steps.js')();
 
 module.exports = {
 	
-	url: "/sites.html/content",
+	url: "/sites.html",
 
 	// insert your locators and methods here
 
-	validate() {
-		I.seeInCurrentUrl(this.url);
+	validate(path = "") {
+		I.seeInCurrentUrl(this.url + path);
 		I.seeTitleEquals("AEM Sites");
 		I.see("Sites");
 	},
 
-	open() {
-		I.amOnAuthor(this.url);
+	open(path = "") {
+		I.amOnAuthor(this.url + path);
 	}
 }

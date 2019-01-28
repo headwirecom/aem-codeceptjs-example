@@ -1,7 +1,7 @@
 Feature("Administering pages in AEM");
 
 Before((sitesPage, loginPage) => {
-	sitesPage.open();
+	sitesPage.open("/content");
     loginPage.signIn();
 });
 
