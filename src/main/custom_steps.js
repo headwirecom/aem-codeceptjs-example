@@ -1,8 +1,20 @@
 module.exports = function() {
   return actor({
 
+	type: function(text) {
+		for (var i = 0; i < text.length; i++) {
+		  this.pressKey(text.charAt(i));
+		}
+	},
+
 	pressEnter: function() {
 		this.pressKey("Enter");
+	},
+
+	pressRight: function(times = 1) {
+		for (var i = 0; i < times; i++) {
+		  this.pressKey("ArrowRight");
+		}
 	},
 
 	amOnAuthor: function(path = "") {

@@ -1,13 +1,13 @@
 Feature("Administering pages in AEM");
 
-Scenario("Open Sign In page", I => {
+Scenario("Open 'Sign In' page", I => {
 	I.amOnAuthor();
 
 	I.seeTitleEquals("AEM Sign In");
 	I.see("Sign In", "#sign-in-title");
 });
 
-Scenario("Enter AEM Start", I => {
+Scenario("Enter 'AEM Start'", I => {
 	I.amOnAuthor();
 	I.signIn();
 
@@ -25,7 +25,7 @@ Scenario("Enter AEM Start", I => {
 	I.see("Communities", locator);
 });
 
-Scenario("Enter Sites", I => {
+Scenario("Enter 'Sites'", I => {
 	I.amOnAuthor();
 	I.signIn();
 
@@ -34,6 +34,24 @@ Scenario("Enter Sites", I => {
 	I.click("Sites", {"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
 
 	I.seeTitleEquals("AEM Sites");
-	I.seeCurrentUrlEquals("http://localhost:4502/sites.html/content");
+	I.seeInCurrentUrl("/sites.html/content");
 	I.see("Sites");
+});
+
+Scenario("Navigate to 'Create Page' wizard", I => {
+	I.amOnAuthor("/sites.html/content");
+	I.signIn();
+
+	I.click({'xpath': '//coral-columnview-item[4]'});
+	I.pressRight(2);
+	I.click('Create', '.granite-collection-create');
+	I.click('Page', '.cq-siteadmin-admin-createpage');
+
+	I.seeTitleEquals("AEM Sites | Create Page");
+	I.seeInCurrentUrl("/content/we-retail/language-masters/en");
+
+	I.see("Template");
+	I.see("Properties");
+	I.see("Create Page");
+	I.see("Content Page");
 });
