@@ -24,3 +24,14 @@ Scenario("Enter AEM Start", I => {
 	I.see("Commerce", locator);
 	I.see("Communities", locator);
 });
+
+Scenario("Enter Sites", I => {
+	I.amOnAuthor();
+	I.signIn();
+
+	I.click({"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
+
+	I.seeTitleEquals("AEM Sites");
+	I.seeCurrentUrlEquals("http://localhost:4502/sites.html/content");
+	I.see("Sites");
+});
