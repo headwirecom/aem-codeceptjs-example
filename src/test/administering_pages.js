@@ -5,23 +5,19 @@ Before((sitesPage, loginPage) => {
     loginPage.signIn();
 });
 
-Scenario("Navigate to 'Create Page' wizard", (I, sitesPage) => {
+let parentPagePath = "/content/we-retail/language-masters/en";
+
+Scenario("Navigate to 'Create Page' wizard", (I, sitesPage, createPageWizardPage) => {
 	I.click({'xpath': '//coral-columnview-item[4]'});
 	I.pressRight(2);
 	I.click('Create', '.granite-collection-create');
 	I.click('Page', '.cq-siteadmin-admin-createpage');
 
-	I.seeTitleEquals("AEM Sites | Create Page");
-	I.seeInCurrentUrl("/content/we-retail/language-masters/en");
-
-	I.see("Template");
-	I.see("Properties");
-	I.see("Create Page");
-	I.see("Content Page");
+	createPageWizardPage.validate(parentPagePath);
 });
 
-Scenario("Create 'My Page' test page", I => {
-	I.amOnAuthor("/mnt/overlay/wcm/core/content/sites/createpagewizard.html/content/we-retail/language-masters/en");
+Scenario("Create 'My Page' test page", (I, createPageWizardPage) => {
+	createPageWizardPage.open(parentPagePath);
 
 	I.click('Content Page', '.foundation-collection-item');
 	I.click('Next');

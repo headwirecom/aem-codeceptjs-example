@@ -17,7 +17,8 @@ exports.config = {
     I: './src/main/custom_steps.js',
 	loginPage: './src/main/pages/Login.js',
 	startPage: './src/main/pages/Start.js',
-	sitesPage: './src/main/pages/Sites.js'
+	sitesPage: './src/main/pages/Sites.js',
+	createPageWizardPage: './src/main/pages/CreatePageWizard.js'
   },
   bootstrap: null,
   mocha: {},
