@@ -4,7 +4,7 @@ exports.config = {
   helpers: {
     Puppeteer: {
       url: 'http://localhost:4502',
-	  show: true,
+	  show: false,
       chrome: {
         defaultViewport: {
           width: 1280,
