@@ -3,7 +3,7 @@ Feature("Administering pages in AEM");
 Before((I, loginPage) => {
 	I.amOnAuthor();
     loginPage.signIn();
-}),
+});
 
 Scenario("Enter 'Sites'", I => {
 	// This locator is not the best. It's too specific, but 'click' seems not to work with coral elements
