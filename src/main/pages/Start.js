@@ -18,4 +18,10 @@ module.exports = {
 		I.see("Commerce", locator);
 		I.see("Communities", locator);
 	},
+
+	gotoSites() {
+		// This locator is not the best. It's too specific, but 'click' seems not to work with coral elements
+		// It would need to be investigated further as such code will quickly become unmaintainable.
+		I.click("Sites", {"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
+	}
 }
