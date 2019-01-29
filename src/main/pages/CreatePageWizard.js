@@ -23,6 +23,7 @@ module.exports = {
 	create(title, name = "") {
 		I.click('Content Page', '.foundation-collection-item');
 		I.click('Next');
+		I.waitForVisible("input.coral-Form-field");
 		I.pressTab(3);
 		I.type(title);
 		I.pressTab();

@@ -18,6 +18,7 @@ module.exports = {
 
 	switchToListView() {
 		I.click("#granite-collection-switcher-toggle");
+		I.waitForVisible(".granite-collection-switcher .coral3-SelectList");
 		I.pressTab();
 		I.pressDown(2);
 		I.pressEnter();
