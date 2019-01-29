@@ -1,5 +1,6 @@
 const I = require("../custom_steps.js")();
 const viewSwitcherFragment = require("../fragments/SitesViewSwitcher.js");
+const createButtonFragment = require("../fragments/SitesCreateButton.js");
 
 module.exports = {
 
@@ -30,7 +31,6 @@ module.exports = {
 	},
 
 	gotoCreatePageWizard() {
-		I.click("Create", ".granite-collection-create");
-		I.click("Page", ".cq-siteadmin-admin-createpage");
+		createButtonFragment.gotoCreatePageWizard();
 	}
 }
