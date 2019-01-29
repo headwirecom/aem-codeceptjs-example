@@ -4,7 +4,14 @@ module.exports = {
 	
 	url: "/mnt/overlay/wcm/core/content/sites/createpagewizard.html",
 
-	// insert your locators and methods here
+	template(name) {
+		return locate(".foundation-collection-item")
+			.withText(name)
+			.as("Template " + name);
+	},
+
+	pageTitleInput: locate("//input[contains(@name, './jcr:title')]").as("Page Title"),
+	pageNameInput: locate("//input[contains(@name, 'pageName')]").as("Page Name"),
 
 	validate(path = "") {
 		I.seeInCurrentUrl(this.url + path);
@@ -20,14 +27,11 @@ module.exports = {
 		I.amOnAuthor(this.url + path);
 	},
 
-	create(title, name = "") {
-		I.click("Content Page", ".foundation-collection-item");
+	create(templateName, title, name = "") {
+		I.click(this.template(templateName));
 		I.click("Next");
-		I.waitForVisible("input.coral-Form-field", 5);
-		I.pressTab(3);
-		I.type(title);
-		I.pressTab();
-		I.type(name);
+		I.fillField(this.pageTitleInput, title);
+		I.fillField(this.pageNameInput, name);
 		I.pressEnter();
 	},
 

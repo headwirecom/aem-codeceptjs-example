@@ -16,6 +16,6 @@ Scenario("Navigate to 'Create Page' wizard", (sitesPage, createPageWizardPage) =
 
 Scenario("Create 'My Page' test page", createPageWizardPage => {
 	createPageWizardPage.open(parentPagePath);
-	createPageWizardPage.create("My Page", "my-page");
+	createPageWizardPage.create("Content Page", "My Page", "my-page");
 	createPageWizardPage.validateCreated();
 });
