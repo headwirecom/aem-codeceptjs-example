@@ -1,4 +1,5 @@
 const I = require("../custom_steps.js")();
+const viewSwitcherFragment = require("../fragments/SitesViewSwitcher.js");
 
 module.exports = {
 
@@ -19,11 +20,7 @@ module.exports = {
 	},
 
 	switchToListView() {
-		I.click("#granite-collection-switcher-toggle");
-		I.waitForVisible(".granite-collection-switcher .coral3-SelectList", 5);
-		I.pressTab();
-		I.pressDown(2);
-		I.pressEnter();
+		viewSwitcherFragment.switchToListView();
 	},
 
 	navigateTo(pageTitles) {
