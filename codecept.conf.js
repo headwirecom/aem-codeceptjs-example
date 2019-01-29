@@ -6,6 +6,7 @@ exports.config = {
       url: 'http://localhost:4502',
 	  show: false,
       chrome: {
+        args: ['--start-maximized', '--window-size=1280,968'],
         defaultViewport: {
           width: 1280,
           height: 960
