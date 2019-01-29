@@ -2,7 +2,7 @@ const I = require("../custom_steps.js")();
 
 module.exports = {
 
-	...require('./AuthorBase.js'),
+	...require("./AuthorBase.js"),
 	
 	url: "/sites.html",
 
