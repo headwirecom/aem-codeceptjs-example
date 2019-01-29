@@ -2,6 +2,8 @@ const I = require("../custom_steps.js")();
 
 module.exports = {
 
+	...require('./AuthorBase.js'),
+
 	url: "/aem/start.html",
 
 	// insert your locators and methods here
