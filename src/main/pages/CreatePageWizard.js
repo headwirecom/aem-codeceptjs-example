@@ -21,9 +21,9 @@ module.exports = {
 	},
 
 	create(title, name = "") {
-		I.click("Content Page", ".foundation-collection-item", 5);
+		I.click("Content Page", ".foundation-collection-item");
 		I.click("Next");
-		I.waitForVisible("input.coral-Form-field");
+		I.waitForVisible("input.coral-Form-field", 5);
 		I.pressTab(3);
 		I.type(title);
 		I.pressTab();

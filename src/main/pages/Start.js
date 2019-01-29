@@ -6,31 +6,40 @@ module.exports = {
 
 	url: "/aem/start.html",
 
-	// insert your locators and methods here
+	navCard(text) {
+		return locate(".globalnav-homecard")
+			.withText(text)
+			.as("Navigation Card: " + text);
+	},
+
+	containsCard(text) {
+		I.see(text, this.navCard(text));
+	},
 
 	validate() {
 		I.seeInCurrentUrl(this.url);
 		I.seeTitleEquals("AEM Start");
 
-		let locator = ".globalnav-homecard-title";
-		I.see("Projects", locator);
-		I.see("Sites", locator);
-		I.see("Experience Fragments", locator);
-		I.see("Assets", locator);
-		I.see("Forms", locator);
-		I.see("Screens", locator);
-		I.see("Personalization", locator);
-		I.see("Commerce", locator);
-		I.see("Communities", locator);
+		this.containsCard("Projects");
+		this.containsCard("Sites");
+		this.containsCard("Experience Fragments");
+		this.containsCard("Assets");
+		this.containsCard("Forms");
+		this.containsCard("Screens");
+		this.containsCard("Personalization");
+		this.containsCard("Commerce");
+		this.containsCard("Communities");
 	},
 
 	open() {
 		I.amOnAuthor(this.url);
 	},
 
+	clickCard(text) {
+		I.click(this.navCard(text));
+	},
+
 	gotoSites() {
-		// This locator is not the best. It's too specific, but 'click' seems not to work with coral elements
-		// It would need to be investigated further as such code will quickly become unmaintainable.
-		I.click("Sites", {"xpath": "//*[@id='globalnav-start-home-collection']/coral-masonry-item[2]"});
+		this.clickCard("Sites");
 	}
 }

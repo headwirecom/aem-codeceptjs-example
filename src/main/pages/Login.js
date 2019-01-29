@@ -4,7 +4,8 @@ module.exports = {
 
 	url: "/libs/granite/core/content/login.html",
 
-	// insert your locators and methods here
+	username: locate("#username").as("User Name input"),
+	password: locate("#password").as("Password input"),
 
 	validate() {
 		I.seeInCurrentUrl(this.url);
@@ -17,8 +18,8 @@ module.exports = {
 	},
 
 	signIn(username = "admin", password = "admin") {
-		I.fillField("#username", username);
-		I.fillField("#password", password);
+		I.fillField(this.username, username);
+		I.fillField(this.password, password);
 		I.pressEnter();
 	}
 }

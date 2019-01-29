@@ -3,12 +3,10 @@ const userPopupFragment = require("../fragments/UserPopup.js");
 
 module.exports = {
 
-	locators: {
-		user: locate(".coral3-Icon--userCircleColor").as("User")
-	},
+	userIcon: locate(".coral3-Icon--userCircleColor").as("User Icon"),
 
 	clickUserButton() {
-		I.click(this.locators.user);
+		I.click(this.userIcon);
 	},
 
 	checkUser(name = "Administrator") {
