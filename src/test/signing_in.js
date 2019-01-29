@@ -11,4 +11,7 @@ Scenario("Open 'Sign In' page", loginPage => {
 Scenario("Enter 'AEM Start'", (loginPage, startPage) => {
 	loginPage.signIn();
 	startPage.validate();
+	startPage.checkUser();
+	startPage.signOut();
+	loginPage.validate();
 });
