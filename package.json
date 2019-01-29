@@ -1,0 +1,8 @@
+{
+	"name": "aem-codeceptjs-example",
+	"dependencies": {
+		"codeceptjs": "^2.0.4",
+		"codeceptjs-puppeteer": "^1.3.0",
+		"puppeteer": "^1.11.0"
+	}
+}
