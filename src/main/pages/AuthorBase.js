@@ -7,10 +7,13 @@ module.exports = {
 
 	clickUserButton() {
 		I.click(this.userIcon);
+		I.waitForAnimation();
 	},
 
 	checkUser(name = "Administrator") {
 		this.clickUserButton();
+
+
 		userPopupFragment.checkUser(name);
 		this.clickUserButton();
 	},

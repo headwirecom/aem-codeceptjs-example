@@ -16,6 +16,7 @@ module.exports = {
 
 	open(path = "") {
 		I.amOnAuthor(this.url + path);
+		I.seeTitleEquals("AEM Sites");
 	},
 
 	switchToListView() {

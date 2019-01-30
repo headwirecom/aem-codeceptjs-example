@@ -18,8 +18,10 @@ module.exports = {
 	},
 
 	signIn(username = "admin", password = "admin") {
+		this.open();
 		I.fillField(this.username, username);
 		I.fillField(this.password, password);
-		I.pressEnter();
+		I.click("Sign In");
+		I.seeTitleEquals("AEM Start");
 	}
 }

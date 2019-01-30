@@ -5,6 +5,7 @@ exports.config = {
     Puppeteer: {
       url: 'http://localhost:4502',
 	  show: false,
+      waitForNavigation: "networkidle2",
       chrome: {
         args: ['--start-maximized', '--window-size=1280,968'],
         defaultViewport: {

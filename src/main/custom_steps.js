@@ -35,6 +35,10 @@ module.exports = function() {
 
 	pressDown(times = 1) {
 		this.press("ArrowDown", times);
+	},
+
+	waitForAnimation() {
+		this.wait(1);
 	}
 
   });
