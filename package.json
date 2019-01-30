@@ -1,5 +1,8 @@
 {
 	"name": "aem-codeceptjs-example",
+	"scripts": {
+		"test": "node node_modules/codeceptjs/bin/codecept.js run"
+	},
 	"dependencies": {
 		"codeceptjs": "^2.0.4",
 		"codeceptjs-puppeteer": "^1.3.0",
