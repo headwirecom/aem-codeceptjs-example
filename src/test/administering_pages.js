@@ -9,7 +9,6 @@ let parentPagePath = "/content/we-retail/language-masters/en";
 Scenario("Navigate to 'Create Page' wizard", (I, sitesPage, createPageWizardPage) => {
 	sitesPage.open("/content");
 	sitesPage.switchToListView();
-	I.say("time to navigate")
 	sitesPage.navigateListViewTo(["We.Retail", "Language Master", "English"]);
 	sitesPage.gotoCreatePageWizard();
 	createPageWizardPage.validate(parentPagePath);

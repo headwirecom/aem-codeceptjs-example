@@ -17,6 +17,15 @@ module.exports = {
 	open(path = "") {
 		I.amOnAuthor(this.url + path);
 		I.seeTitleEquals("AEM Sites");
+
+		// hack to dismiss the onboarding dialog if it shows up
+		I.executeScript(function(done) {
+			if($('.granite-shell-onboarding-popover button')[0]) {
+				$('.granite-shell-onboarding-popover button')[0].click();
+			}
+		})
+		I.wait(1)
+
 	},
 
 	switchToListView() {
@@ -26,6 +35,7 @@ module.exports = {
 	navigateListViewTo(pageTitles) {
 		for(let i = 0; i < pageTitles.length; i++) {
 			I.click(pageTitles[i]);
+			I.see(pageTitles[i])
 		}
 	},
 
