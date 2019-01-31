@@ -1,3 +1,6 @@
+const basePath = './src/main/';
+const pagesPath = basePath + 'pages/';
+
 exports.config = {
   tests: './src/test/*.js',
   output: './output',
@@ -17,11 +20,12 @@ exports.config = {
     }
   },
   include: {
-    I: './src/main/custom_steps.js',
-	loginPage: './src/main/pages/Login.js',
-	startPage: './src/main/pages/Start.js',
-	sitesPage: './src/main/pages/Sites.js',
-	createPageWizardPage: './src/main/pages/CreatePageWizard.js'
+    I: basePath + 'custom_steps.js',
+	loginPage: pagesPath + 'Login.js',
+	startPage: pagesPath + 'Start.js',
+	sitesPage: pagesPath + 'Sites.js',
+	createPageWizardPage: pagesPath + 'CreatePageWizard.js',
+	editorPage: pagesPath + 'Editor.js'
   },
   bootstrap: null,
   mocha: {},

@@ -4,7 +4,7 @@ const createButtonFragment = require("../fragments/SitesCreateButton.js");
 
 const url = "/sites.html";
 
-module.exports = { ...require("./AuthorBase.js"),	
+module.exports = { ...require("./AuthorBase.js"),
 
 	validate(path = "") {
 		I.seeInCurrentUrl(url + path);
