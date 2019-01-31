@@ -1,4 +1,5 @@
 const I = require("../custom_steps.js")();
+const onboardingOverlay = require("../fragments/OnboardingOverlay.js");
 const userPopupFragment = require("../fragments/UserPopup.js");
 
 const locators = {
@@ -7,6 +8,11 @@ const locators = {
 };
 
 module.exports = {
+
+	dismissOnboarding() {
+		onboardingOverlay.dismiss();
+		I.wait(1);
+	},
 
 	clickUserButton() {
 		I.click(locators.userIcon);

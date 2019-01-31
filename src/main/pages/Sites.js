@@ -14,15 +14,7 @@ module.exports = { ...require("./AuthorBase.js"),
 
 	open(path = "") {
 		I.amOnAuthor(url + path);
-
-		// hack to dismiss the onboarding dialog if it shows up
-		I.executeScript(function(done) {
-			let button = $('.granite-shell-onboarding-popover button')[0];
-			if(button) {
-				button.click();
-			}
-		});
-		I.wait(1);
+		this.dismissOnboarding();
 	},
 
 	switchToListView() {
@@ -31,8 +23,9 @@ module.exports = { ...require("./AuthorBase.js"),
 
 	navigateListViewTo(pageTitles) {
 		for(let i = 0; i < pageTitles.length; i++) {
-			I.see(pageTitles[i]);
-			I.click(pageTitles[i]);
+			let title = pageTitles[i];
+			I.see(title);
+			I.click(title);
 		}
 	},
 
