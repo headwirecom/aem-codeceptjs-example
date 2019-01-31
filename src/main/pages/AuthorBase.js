@@ -1,12 +1,15 @@
 const I = require("../custom_steps.js")();
 const userPopupFragment = require("../fragments/UserPopup.js");
 
+const locators = {
+	userIcon: locate(".coral-Icon--userCircleColor")
+		.as("User Icon")
+};
+
 module.exports = {
 
-	userIcon: locate(".coral3-Icon--userCircleColor").as("User Icon"),
-
 	clickUserButton() {
-		I.click(this.userIcon);
+		I.click(locators.userIcon);
 		I.waitForAnimation();
 	},
 
@@ -20,5 +23,4 @@ module.exports = {
 		this.clickUserButton();
 		userPopupFragment.signOut();
 	}
-
 }

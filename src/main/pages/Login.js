@@ -1,27 +1,28 @@
 const I = require("../custom_steps.js")();
 
+const url = "/libs/granite/core/content/login.html";
+
+const locators = {
+	username: locate("#username").as("User Name input"),
+	password: locate("#password").as("Password input")
+};
+
 module.exports = {
 
-	url: "/libs/granite/core/content/login.html",
-
-	username: locate("#username").as("User Name input"),
-	password: locate("#password").as("Password input"),
-
 	validate() {
-		I.seeInCurrentUrl(this.url);
-		I.seeTitleEquals("AEM Sign In");
+		I.seeInCurrentUrl(url);
+		I.seeInTitle("AEM Sign In");
 		I.see("Sign In");
 	},
 
 	open() {
-		I.amOnAuthor(this.url);
+		I.amOnAuthor(url);
 	},
 
 	signIn(username = "admin", password = "admin") {
 		this.open();
-		I.fillField(this.username, username);
-		I.fillField(this.password, password);
+		I.fillField(locators.username, username);
+		I.fillField(locators.password, password);
 		I.click("Sign In");
-		I.seeTitleEquals("AEM Start");
 	}
 }

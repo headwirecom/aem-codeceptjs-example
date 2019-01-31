@@ -1,19 +1,18 @@
 const I = require("../custom_steps.js")();
 
-module.exports = {
+const locators = {
+	signOut: locate("coral-anchorbutton-label")
+		.withText(("Sign Out"))
+		.as("Sign Out")
+};
 
-	locators: {
-		signOut: locate("coral-anchorbutton-label")
-			.withText(("Sign Out"))
-			.as("Sign Out")
-	},
+module.exports = {
 
 	checkUser(name = "Administrator") {
 		I.see(name);
 	},
 
 	signOut() {
-		I.click(this.locators.signOut);
+		I.click(locators.signOut);
 	}
-
 }

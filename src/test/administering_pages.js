@@ -1,12 +1,12 @@
 Feature("Administering pages in AEM");
 
-Before((sitesPage, loginPage) => {
+Before(loginPage => {
     loginPage.signIn();
 });
 
-let parentPagePath = "/content/we-retail/language-masters/en";
+const parentPagePath = "/content/we-retail/language-masters/en";
 
-Scenario("Navigate to 'Create Page' wizard", (I, sitesPage, createPageWizardPage) => {
+Scenario("Navigate to 'Create Page' wizard", (sitesPage, createPageWizardPage) => {
 	sitesPage.open("/content");
 	sitesPage.switchToListView();
 	sitesPage.navigateListViewTo(["We.Retail", "Language Master", "English"]);

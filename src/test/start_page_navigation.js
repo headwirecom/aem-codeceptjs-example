@@ -1,11 +1,11 @@
-Feature("Navigation from 'Start Page'");
+Feature("Navigation in Start page'");
 
-Before((startPage, loginPage) => {
+Before((loginPage, startPage) => {
 	startPage.open();
     loginPage.signIn();
 });
 
-Scenario("Enter 'Sites'", (startPage, sitesPage) => {
+Scenario("Enter Sites page", (startPage, sitesPage) => {
 	startPage.gotoSites();
 	sitesPage.validate();
 });

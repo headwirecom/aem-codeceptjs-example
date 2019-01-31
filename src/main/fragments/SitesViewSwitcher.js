@@ -1,7 +1,6 @@
 const I = require("../custom_steps.js")();
 
-module.exports = {
-
+const locators = {
 	root: locate("coral-cyclebutton")
 		.withAttr({ "data-granite-collection-switcher-target": ".cq-siteadmin-admin-childpages"})
 		.as("Switch 'Sites' View Container"),
@@ -11,16 +10,19 @@ module.exports = {
 			.inside(this.root)
 			.withText(text)
 			.as("Option: " + text);
-	},
+	}	
+};
+
+module.exports = {
 
 	clickSwitchButton() {
-		I.seeElement(this.root, 2);
-		I.click(this.root);
+		I.seeElement(locators.root, 2);
+		I.click(locators.root);
 	},
 
 	switchTo(text) {
 		this.clickSwitchButton();
-		I.click(this.optionButton(text));
+		I.click(locators.optionButton(text));
 	},
 
 	switchToListView() {

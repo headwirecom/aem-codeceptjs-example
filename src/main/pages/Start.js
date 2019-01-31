@@ -1,24 +1,24 @@
 const I = require("../custom_steps.js")();
 
-module.exports = {
+const url = "/aem/start.html";
 
-	...require("./AuthorBase.js"),
-
-	url: "/aem/start.html",
-
+const locators = {
 	navCard(text) {
 		return locate(".globalnav-homecard")
 			.withText(text)
 			.as("Navigation Card: " + text);
-	},
+	}
+};
+
+module.exports = { ...require("./AuthorBase.js"),
 
 	containsCard(text) {
-		I.see(text, this.navCard(text));
+		I.see(text, locators.navCard(text));
 	},
 
 	validate() {
-		I.seeInCurrentUrl(this.url);
-		I.seeTitleEquals("AEM Start");
+		I.seeInCurrentUrl(url);
+		I.seeInTitle("Start");
 
 		this.containsCard("Projects");
 		this.containsCard("Sites");
@@ -32,11 +32,11 @@ module.exports = {
 	},
 
 	open() {
-		I.amOnAuthor(this.url);
+		I.amOnAuthor(url);
 	},
 
 	clickCard(text) {
-		I.click(this.navCard(text));
+		I.click(locators.navCard(text));
 	},
 
 	gotoSites() {
