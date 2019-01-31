@@ -12,8 +12,6 @@ module.exports = {
 
 	checkUser(name = "Administrator") {
 		this.clickUserButton();
-
-
 		userPopupFragment.checkUser(name);
 		this.clickUserButton();
 	},

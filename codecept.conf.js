@@ -4,8 +4,9 @@ exports.config = {
   helpers: {
     Puppeteer: {
       url: 'http://localhost:4502',
-	  show: false,
-      waitForNavigation: "networkidle2",
+	  show: true,
+	  restart: false,
+      waitForNavigation: [ "domcontentloaded", "networkidle0" ],
       chrome: {
         args: ['--start-maximized', '--window-size=1280,968'],
         defaultViewport: {
