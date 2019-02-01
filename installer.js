@@ -1,16 +1,21 @@
-const basePath = "./src/main/";
+const srcPath = "./src/";
+const basePath = srcPath + "main/";
 const pagesPath = basePath + "pages/";
+
+const page = function(name) {
+	return pagesPath + name + ".js";
+}
 
 module.exports = function() {
 	return {
 		getIncludes() {
 			return {
 				I: basePath + "custom_steps.js",
-				loginPage: pagesPath + "Login.js",
-				startPage: pagesPath + "Start.js",
-				sitesPage: pagesPath + "Sites.js",
-				createPageWizardPage: pagesPath + "CreatePageWizard.js",
-				editorPage: pagesPath + "Editor.js"
+				loginPage: page("Login"),
+				startPage: page("Start"),
+				sitesPage: page("Sites"),
+				createPageWizardPage: page("CreatePageWizard"),
+				editorPage: page("Editor")
 			  };
 		}
 	};

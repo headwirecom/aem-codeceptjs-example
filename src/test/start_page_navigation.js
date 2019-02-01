@@ -1,4 +1,4 @@
-Feature("Navigation in Start page'");
+Feature("Navigation in Start page");
 
 Before((loginPage, startPage) => {
 	startPage.open();
