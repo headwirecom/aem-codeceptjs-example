@@ -28,11 +28,11 @@ module.exports = {
 	},
 
 	clickEditable(path) {
-		I.click({"xpath": "//div[@data-path='" + path + "']"});
+		I.click("//div[contains(@data-path, '" + path + "')]");
 	},
 
 	clickActionButton(actionName) {
-		I.click({"xpath": "//button[@data-action='" + actionName + "']"});
+		I.click("//button[contains(@data-action, '" + actionName + "')]");
 	},
 
 	invokeOnEditable(editablePath, actionName) {
@@ -52,6 +52,7 @@ module.exports = {
 
 	editInline(editablePath) {
 		this.invokeOnEditable(editablePath, "EDIT");
+		return require("../fragments/InlineRichtextEditor.js");
 	},
 
 	openDialog(editablePath) {
