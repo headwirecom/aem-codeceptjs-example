@@ -1,16 +1,30 @@
 const I = require("../custom_steps.js")();
 
+const locators = {
+	submit: locate(".cq-dialog-submit")
+		.as("Submit button"),
+
+	root(path) {
+		return locate("//form[contains(@action, '" + path + "')]")
+			.as("Dialog form Root");
+	},
+
+	input(rootPath, name) {
+		return locate("//input[contains(@name, './" + name + "')]")
+			.inside(this.root(rootPath))
+			.as("Input for '" + name + "'");
+	}
+};
+
 module.exports = function(path) {
 	let adjustedPath = path.replace("jcr:", "_jcr_");
 	let inputLocator = function(name) {
-		let form = "//form[contains(@action, '" + adjustedPath + "')]";
-		let input = "//input[contains(@name, './" + name + "')]";
-		return locate(form + input);
+		return locators.input(adjustedPath, name);
 	};
 
 	return {
 		submit() {
-			I.click(".cq-dialog-submit");
+			I.click(locators.submit);
 		},
 
 		set(name, value) {

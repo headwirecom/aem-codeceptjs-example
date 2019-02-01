@@ -1,21 +1,31 @@
 const I = require("../custom_steps.js")();
 
+const actionButton = function(action, description) {
+	return locate("//button[contains(@data-action, '" + action + "')]")
+		.as(description);
+};
+const locators = {
+	save: actionButton("control#save", "Save"),
+	format: actionButton("#format", "Format"),
+	boldFont: actionButton("format#bold", "Bold Font")
+}
+
 module.exports = {
 
 	clickButton(actionName) {
-		I.click("//button[contains(@data-action, '" + actionName + "')]");
+		I.click(actionButton(actionName, actionName));
 	},
 
 	close() {
-		this.clickButton("control#save");
+		I.click(locators.save);
 	},
 	
 	clickFormatButton() {
-		this.clickButton("#format");
+		I.click(locators.format);
 	},
 	
 	clickFormatBoldButton() {
-		this.clickButton("format#bold");
+		I.click(locators.boldFont);
 	},
 	
 	toggleBold() {
