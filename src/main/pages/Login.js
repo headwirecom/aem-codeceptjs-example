@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	open() {
-		I.amOnAuthor(url);
+		I.amOnPage(url);
 	},
 
 	signIn(username = "admin", password = "admin") {

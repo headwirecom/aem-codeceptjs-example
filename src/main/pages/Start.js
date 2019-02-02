@@ -32,7 +32,7 @@ module.exports = { ...require("./AuthorBase.js"),
 	},
 
 	open() {
-		I.amOnAuthor(url);
+		I.amOnPage(url);
 	},
 
 	clickCard(text) {

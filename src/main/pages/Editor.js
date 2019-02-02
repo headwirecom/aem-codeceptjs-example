@@ -39,7 +39,7 @@ module.exports = {
 	},
 
 	open(path = "") {
-		I.amOnAuthor(getUrl(path));
+		I.amOnPage(getUrl(path));
 	},
 
 	clickEditable(path) {

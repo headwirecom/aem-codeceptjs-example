@@ -13,7 +13,7 @@ module.exports = { ...require("./AuthorBase.js"),
 	},
 
 	open(path = "") {
-		I.amOnAuthor(url + path);
+		I.amOnPage(url + path);
 		this.dismissOnboarding();
 	},
 

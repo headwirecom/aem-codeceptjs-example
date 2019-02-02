@@ -30,7 +30,7 @@ module.exports = {
 	},
 
 	open(path = "") {
-		I.amOnAuthor(url + path);
+		I.amOnPage(url + path);
 	},
 
 	create(templateName, title, name = "") {

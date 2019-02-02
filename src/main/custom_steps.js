@@ -1,14 +1,6 @@
 module.exports = function() {
 	return actor({
 
-		amOnAuthor(path = "") {
-			if (!path.startsWith("/")) {
-				path = "/" + path;
-			}
-
-			this.amOnPage("http://localhost:4502" + path);
-		},
-
 		type(text) {
 			for (var i = 0; i < text.length; i++) {
 			  this.pressKey(text.charAt(i));
