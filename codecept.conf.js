@@ -5,7 +5,7 @@ exports.config = {
   output: "./output",
   helpers: {
     Puppeteer: {
-      url: "http://localhost:4502",
+      url: installer.getUrl(),
 	  show: true,
 	  restart: false,
       waitForNavigation: [ "domcontentloaded", "networkidle0" ],

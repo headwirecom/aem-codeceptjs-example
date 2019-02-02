@@ -4,10 +4,16 @@ const pagesPath = basePath + "pages/";
 
 const page = function(name) {
 	return pagesPath + name + ".js";
-}
+};
+
+const aem = require("./aem.config.js");
 
 module.exports = function() {
 	return {
+		getUrl() {
+			return aem.url;
+		},
+
 		getIncludes() {
 			return {
 				I: basePath + "custom_steps.js",
