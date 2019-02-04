@@ -1,9 +1,10 @@
 const I = require("../custom_steps.js")();
+const sidePanel = require("../fragments/EditorSidePanel.js");
 
 const url = "/editor.html";
 
 const extension = ".html";
-appendExtension = function(path) {
+const appendExtension = function(path) {
 	if (!path || path.endsWith(extension)) {
 		return path;
 	}
@@ -11,8 +12,12 @@ appendExtension = function(path) {
 	return path + extension;
 };
 
-getUrl = function(path) {
+const getUrl = function(path) {
 	return url + appendExtension(path);
+};
+
+const getParsysDataPath = function(path) {
+	return path + "/*";
 };
 
 const locators = {
@@ -28,7 +33,7 @@ const locators = {
 		return locate("//coral-selectlist-item[contains(text(),'" + name + "')]")
 			.as("List item for component '" + name + "'");
 	}
-}
+};
 
 module.exports = {
 
@@ -56,10 +61,10 @@ module.exports = {
 	},
 
 	openInsertDialog(parsysPath) {
-		this.invokeOnEditable(parsysPath + "/*", "INSERT");
+		this.invokeOnEditable(getParsysDataPath(parsysPath), "INSERT");
 	},
 
-	addComponent(parsysPath, componentName) {
+	addComponent(componentName, parsysPath) {
 		this.openInsertDialog(parsysPath);
 		I.click(locators.component(componentName));
 		I.wait(1);
@@ -73,5 +78,15 @@ module.exports = {
 	openDialog(editablePath) {
 		this.invokeOnEditable(editablePath, "CONFIGURE");
 		return require("../fragments/Dialog.js")(editablePath);
+	},
+
+	dragAndDrop(componentName, parsysPath) {
+		sidePanel.toggleVisible();
+		sidePanel.clickComponents();
+		I.wait(1);
+		I.dragAndDrop(sidePanel.locateComponent(componentName),
+			locators.editable(getParsysDataPath(parsysPath)));
+		sidePanel.clickAssets();
+		sidePanel.toggleVisible();
 	}
 }

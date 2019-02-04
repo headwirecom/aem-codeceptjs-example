@@ -16,7 +16,7 @@ Scenario("Check whether the page exists", editorPage => {
 
 Scenario("Add Title", editorPage => {
 	editorPage.open(pagePath);
-	editorPage.addComponent(parsysPath, "Title");
+	editorPage.addComponent("Title", parsysPath);
 	let dialog = editorPage.openDialog(titlePath);
 	dialog.set("jcr:title", "My Custom Title");
 	dialog.submit();
@@ -24,9 +24,14 @@ Scenario("Add Title", editorPage => {
 
 Scenario("Inline Editor", editorPage => {
 	editorPage.open(pagePath);
-	editorPage.addComponent(parsysPath, "Text");
+	editorPage.addComponent("Text", parsysPath);
 	let inlineEditor = editorPage.editInline(textPath);
 	inlineEditor.type("This text has no formatting. ");
 	inlineEditor.toggleBold();
 	inlineEditor.type("This text has bold formatting.");
+});
+
+Scenario("Drag and Drop", editorPage => {
+	editorPage.open(pagePath);
+	editorPage.dragAndDrop("Articles List", parsysPath);
 });
