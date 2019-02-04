@@ -16,7 +16,7 @@ module.exports = {
 		I.click(actionButton(actionName, actionName));
 	},
 
-	close() {
+	save() {
 		I.click(locators.save);
 	},
 	

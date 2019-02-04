@@ -29,6 +29,7 @@ Scenario("Inline Editor", editorPage => {
 	inlineEditor.type("This text has no formatting. ");
 	inlineEditor.toggleBold();
 	inlineEditor.type("This text has bold formatting.");
+	inlineEditor.save();
 });
 
 Scenario("Drag and Drop", editorPage => {
