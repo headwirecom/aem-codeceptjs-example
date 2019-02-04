@@ -6,8 +6,8 @@ Before(loginPage => {
 
 const parentPagePath = "/content/we-retail/language-masters/en";
 
-Scenario("Navigate to 'Create Page' wizard", (sitesPage, createPageWizardPage) => {
-	sitesPage.open("/content");
+Scenario("Navigate to 'Create Page' wizard", async (sitesPage, createPageWizardPage) => {
+	await sitesPage.open("/content");
 	sitesPage.switchToListView();
 	sitesPage.navigateListViewTo(["We.Retail", "Language Master", "English"]);
 	sitesPage.gotoCreatePageWizard();

@@ -11,7 +11,6 @@ module.exports = {
 
 	dismissOnboarding() {
 		onboardingOverlay.dismiss();
-		I.wait(1);
 	},
 
 	clickUserButton() {

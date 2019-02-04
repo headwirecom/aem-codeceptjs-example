@@ -12,9 +12,22 @@ module.exports = { ...require("./AuthorBase.js"),
 		I.see("Sites");
 	},
 
-	open(path = "") {
-		I.amOnPage(url + path);
-		this.dismissOnboarding();
+	open: async function(path = "") {
+
+        I.amOnPage(url + path);
+        I.seeInTitle("AEM Sites");
+
+        // need to wait in case the onboarding dialog shows up
+        I.wait(1);
+
+        const that = this;
+        return new Promise( async function(resolve) {
+            let count = await I.grabNumberOfVisibleElements(locate(".granite-shell-onboarding-popover"));
+            if(count > 0) {
+                that.dismissOnboarding();
+            }
+            resolve();
+        })
 	},
 
 	switchToListView() {
