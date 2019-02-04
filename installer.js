@@ -1,24 +1,31 @@
+const fs = require("fs");
 const aem = require("./aem.config.js");
 
-const srcPath = "./src/";
-const basePath = srcPath + "main/";
-const pagesPath = basePath + "pages/";
+const includes = {};
 
-const pagePath = function(name) {
-	return pagesPath + name + ".js";
-};
+function fileNameToPageName(name) {
+	const objName = name.split('.')[0];
+	const pageObjName = objName.charAt(0).toLowerCase() + objName.substring(1, objName.length) + "Page";
+	return pageObjName;
+}
 
-const loginPagePath = pagePath("Login");
-const startPagePath = pagePath("Start");
+function init() {
+	const pagesVersionPath = './src/main/'+aem.version+'/pages';
 
-const includes = {
-	I: basePath + "custom_steps.js",
-	loginPage: loginPagePath,
-	startPage: startPagePath,
-	sitesPage: pagePath("Sites"),
-	createPageWizardPage: pagePath("CreatePageWizard"),
-	editorPage: pagePath("Editor")
-};
+	const pages = fs.readdirSync('./src/main/pages')
+	const pagesVersion = fs.readdirSync(pagesVersionPath)
+
+	for(let i = 0; i < pagesVersion.length; i++) {
+		includes[fileNameToPageName(pagesVersion[i])] = (pagesVersionPath + "/" + pagesVersion[i])
+	}
+	for(let i = 0; i < pages.length; i++) {
+		if(!pagesVersion[fileNameToPageName(pages[i])]) {
+			includes[fileNameToPageName(pages[i])] = ("./src/main/pages/" + pages[i])
+		}
+	}
+}
+
+init();
 
 module.exports = {
 	getUrl() {
