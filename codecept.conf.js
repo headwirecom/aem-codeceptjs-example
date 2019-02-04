@@ -1,16 +1,19 @@
-const installer = require("./installer.js")();
+const installer = require("./installer.js");
+
+const includes = installer.getIncludes();
+const url = installer.getUrl();
 
 exports.config = {
   tests: "./src/test/*.js",
   output: "./output",
   helpers: {
     Puppeteer: {
-      url: installer.getUrl(),
+      url: url,
 	  show: true,
 	  restart: false,
-      waitForNavigation: [ "domcontentloaded", "networkidle0" ],
+      waitForNavigation: [ "domcontentloaded", "networkidle2" ],
       chrome: {
-        args: ["--start-maximized", "--window-size=1280,968"],
+        args: ["--start-maximized", "--window-size=1280,960"],
         defaultViewport: {
           width: 1280,
           height: 960
@@ -18,7 +21,7 @@ exports.config = {
 	  }
     }
   },
-  include: installer.getIncludes(),
+  include: includes,
   bootstrap: null,
   mocha: {},
   name: "codeceptjs"
