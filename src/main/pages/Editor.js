@@ -82,11 +82,12 @@ module.exports = {
 
 	dragAndDrop(componentName, parsysPath) {
 		sidePanel.toggleVisible();
-		sidePanel.clickComponents();
-		I.wait(1);
-		I.dragAndDrop(sidePanel.locateComponent(componentName),
-			locators.editable(getParsysDataPath(parsysPath)));
-		sidePanel.clickAssets();
+		sidePanel.clickComponentsTab();
+		let componentLocator = sidePanel.waitForComponent(componentName);
+		let parsysLocator = locators.editable(getParsysDataPath(parsysPath));
+		I.waitForVisible(parsysLocator);
+		I.dragAndDrop(componentLocator, parsysLocator);
+		sidePanel.clickAssetsTab();
 		sidePanel.toggleVisible();
 	}
 }

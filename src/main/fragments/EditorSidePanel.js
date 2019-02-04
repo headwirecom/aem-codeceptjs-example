@@ -23,15 +23,21 @@ module.exports = {
 		I.click(locators.tab(title));
 	},
 
-	clickAssets() {
+	clickAssetsTab() {
 		this.clickTab("Assets");
 	},
 
-	clickComponents() {
+	clickComponentsTab() {
 		this.clickTab("Components");
 	},
 
 	locateComponent(name) {
 		return locators.component(name);
+	},
+
+	waitForComponent(name) {
+		let locator = locators.component(name);
+		I.waitForVisible(locator);
+		return locator;
 	}
 }
