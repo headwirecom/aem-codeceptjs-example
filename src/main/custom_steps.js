@@ -1,3 +1,6 @@
+const fs = require('fs')
+const aem = require('../../aem.config.js')
+
 module.exports = function() {
 	return actor({
 
@@ -31,6 +34,15 @@ module.exports = function() {
 
 		waitForAnimation() {
 			this.wait(1);
+		},
+
+		requireFragment(name) {
+
+			if(fs.existsSync('./'+aem.version+'/fragments/'+name+'.js')) {
+				return require('./'+aem.version+'/fragments/'+name+'.js');
+			}
+			return require('./fragments/'+name+'.js')
+
 		}
 	});
 }

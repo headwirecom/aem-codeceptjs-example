@@ -1,6 +1,6 @@
 const I = require("../custom_steps.js")();
-const viewSwitcherFragment = require("../fragments/SitesViewSwitcher.js");
-const createButtonFragment = require("../fragments/SitesCreateButton.js");
+const viewSwitcherFragment = I.requireFragment("SitesViewSwitcher");
+const createButtonFragment = I.requireFragment("SitesCreateButton");
 
 const url = "/sites.html";
 
