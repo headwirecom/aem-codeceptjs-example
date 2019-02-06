@@ -9,7 +9,6 @@ const zipDirectory = function(zip, rootPath) {
 		let name = names[i];
 		let path = rootPath + "/" + name;
 		let stat = fs.lstatSync(path);
-		console.log(path);
 		if (stat.isDirectory()) {
 			zipDirectory(zip.folder(name), path);
 		} else {
