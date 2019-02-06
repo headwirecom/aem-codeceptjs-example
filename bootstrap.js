@@ -1,8 +1,7 @@
 const fs = require("fs");
-const contentFolder = "content";
-const contentPath = "./" + contentFolder;
-const targetPath = "./target";
-const zipPath = targetPath + "/" + contentFolder + ".zip";
+const JSZip = require("jszip");
+const request = require("request");
+const packmgrServicePath = "/crx/packmgr/service.jsp";
 
 const zipDirectory = function(zip, rootPath) {
 	let names = fs.readdirSync(rootPath);
@@ -19,15 +18,54 @@ const zipDirectory = function(zip, rootPath) {
 	}
 };
 
-let zip = new require("jszip")();
-zipDirectory(zip, contentPath);
-if (!fs.existsSync(targetPath)) {
-	fs.mkdirSync(targetPath);
+const displayPackageUploadError = function(error, response, body) {
+	if (!error) {
+		return;
+	}
+
+	console.log("Error: ", error);
+	console.log("Status Code: ", response && response.statusCode);
+	console.log("Body: ", body);
 }
 
+const installPackage = function(url, user, password) {
+	let packmgrServiceUrl = url + packmgrServicePath;
+	let options = {
+		auth: {
+			user: user,
+			pass: password
+		},
+		formData: {
+			file: fs.createReadStream(zipPath),
+			force: "true",
+			install: "true"
+		}
+	};
+	return request.post(packmgrServiceUrl, options, displayPackageUploadError);
+}
+
+const contentFolder = "content";
+const contentPath = "./" + contentFolder;
+const targetPath = "./target";
+const zipPath = targetPath + "/" + contentFolder + ".zip";
+const aem = require("./aem.config.js");
+
+if (!fs.existsSync(targetPath)) {
+	console.log("Creating temporary folder '" + targetPath + "'.");
+	fs.mkdirSync(targetPath, { recursive: true });
+}
+
+let zip = new JSZip();
+console.log("Creating test content package '" + zipPath + "'.");
+zipDirectory(zip, contentPath);
 zip.generateNodeStream({
 	type: "nodebuffer",
 	streamFiles: true,
 	compression: "DEFLATE"
 })
-.pipe(fs.createWriteStream(zipPath));
+.pipe(fs.createWriteStream(zipPath))
+.on("finish", function() {
+	console.log("Uploading the package to '" + aem.url + "'.");
+	installPackage(aem.url, aem.user, aem.password);
+	done = true;
+});
