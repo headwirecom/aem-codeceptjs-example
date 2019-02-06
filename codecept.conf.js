@@ -19,7 +19,7 @@ exports.config = {
     }
   },
   include: installer.getIncludes(),
-  bootstrap: null,
+  bootstrap: "bootstrap.js",
   mocha: {},
   name: "codeceptjs"
 }
