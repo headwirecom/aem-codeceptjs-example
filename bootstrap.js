@@ -44,11 +44,10 @@ const installPackage = function(url, user, password) {
 	return request.post(packmgrServiceUrl, options, displayPackageUploadError);
 }
 
-const contentFolder = "content";
-const contentPath = "./" + contentFolder;
-const targetPath = "./target";
-const zipPath = targetPath + "/" + contentFolder + ".zip";
-const aem = require("./aem.config.js");
+let project = require("./project.config.js");
+let contentPath = "./" + project.contentFolder;
+const targetPath = "./" + project.tempFolder;
+const zipPath = targetPath + "/" + project.contentFolder + ".zip";
 
 if (!fs.existsSync(targetPath)) {
 	console.log("Creating temporary folder '" + targetPath + "'.");
@@ -65,6 +64,7 @@ zip.generateNodeStream({
 })
 .pipe(fs.createWriteStream(zipPath))
 .on("finish", function() {
+	let aem = require("./aem.config.js");
 	console.log("Uploading the package to '" + aem.url + "'.");
 	installPackage(aem.url, aem.user, aem.password);
 	done = true;
