@@ -26,7 +26,7 @@ const displayPackageUploadError = function(error, response, body) {
 	console.log("Error: ", error);
 	console.log("Status Code: ", response && response.statusCode);
 	console.log("Body: ", body);
-}
+};
 
 const installPackage = function(url, user, password) {
 	let packmgrServiceUrl = url + packmgrServicePath;
@@ -41,8 +41,9 @@ const installPackage = function(url, user, password) {
 			install: "true"
 		}
 	};
+
 	return request.post(packmgrServiceUrl, options, displayPackageUploadError);
-}
+};
 
 let project = require("./project.config.js");
 let contentPath = "./" + project.contentFolder;
