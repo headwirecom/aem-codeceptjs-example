@@ -4,7 +4,7 @@ Before(loginPage => {
     loginPage.signIn();
 });
 
-const pagePath = "/content/we-retail/language-masters/en/my-page";
+const pagePath = "/content/we-retail/language-masters/en/tests/editing-pages";
 const parsysPath = pagePath + "/jcr:content/root/responsivegrid";
 const titlePath = parsysPath + "/title";
 const textPath = parsysPath + "/text";
