@@ -67,5 +67,4 @@ zip.generateNodeStream({
 	let aem = require("./aem.config.js");
 	console.log("Uploading the package to '" + aem.url + "'.");
 	installPackage(aem.url, aem.user, aem.password);
-	done = true;
 });
