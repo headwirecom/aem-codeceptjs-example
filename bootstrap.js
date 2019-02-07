@@ -1,20 +1,6 @@
 const fs = require("fs");
-const JSZip = require("jszip");
+const zipFolderContent = require("./lib/zip.js").zipFolderContent;
 const installPackage = require("./lib/aem.js").installPackage;
-
-const zipDirectory = function(zip, rootPath) {
-	let names = fs.readdirSync(rootPath);
-	for (let i = 0; i < names.length; i++) {
-		let name = names[i];
-		let path = rootPath + "/" + name;
-		let stat = fs.lstatSync(path);
-		if (stat.isDirectory()) {
-			zipDirectory(zip.folder(name), path);
-		} else {
-			zip.file(name, fs.readFileSync(path));
-		}
-	}
-};
 
 let project = require("./project.config.js");
 let contentPath = "./" + project.contentFolder;
@@ -26,9 +12,8 @@ if (!fs.existsSync(targetPath)) {
 	fs.mkdirSync(targetPath, { recursive: true });
 }
 
-let zip = new JSZip();
 console.log("Creating test content package '" + zipPath + "'.");
-zipDirectory(zip, contentPath);
+let zip = zipFolderContent(contentPath);
 zip.generateNodeStream({
 	type: "nodebuffer",
 	streamFiles: true,
