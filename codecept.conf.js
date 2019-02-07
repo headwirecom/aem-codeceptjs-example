@@ -20,6 +20,7 @@ exports.config = {
   },
   include: installer.getIncludes(),
   bootstrap: "bootstrap.js",
+  teardown: "teardown.js",
   mocha: {},
   name: "codeceptjs"
 }
