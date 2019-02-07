@@ -16,5 +16,5 @@ aemLib.pipeZipToPackageFile(zip, zipPath)
 .on("finish", function() {
 	let aem = require("./aem.config.js");
 	console.log("Uploading the package to '" + aem.url + "'.");
-	aemLib.installPackage(aem, zipPath);
+	aemLib.installPackage(zipPath, aem);
 });
