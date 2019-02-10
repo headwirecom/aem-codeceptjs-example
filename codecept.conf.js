@@ -1,11 +1,14 @@
-const installer = require("./installer.js")();
+const installer = require("./installer.js");
+
+const includes = installer.getIncludes();
+const url = installer.getUrl();
 
 exports.config = {
   tests: "./src/test/*.js",
   output: "./output",
   helpers: {
     Puppeteer: {
-      url: installer.getUrl(),
+      url: url,
 	  show: true,
 	  restart: false,
       waitForNavigation: [ "domcontentloaded", "networkidle0" ],
@@ -18,7 +21,7 @@ exports.config = {
 	  }
     }
   },
-  include: installer.getIncludes(),
+  include: includes,
   bootstrap: "bootstrap.js",
   teardown: "teardown.js",
   mocha: {},
