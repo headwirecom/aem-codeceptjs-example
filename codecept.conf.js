@@ -11,9 +11,9 @@ exports.config = {
       url: url,
 	  show: true,
 	  restart: false,
-      waitForNavigation: [ "domcontentloaded", "networkidle0" ],
+      waitForNavigation: [ "domcontentloaded", "networkidle2" ],
       chrome: {
-        args: ["--start-maximized", "--window-size=1280,968"],
+        args: ["--start-maximized", "--window-size=1280,960"],
         defaultViewport: {
           width: 1280,
           height: 960
