@@ -4,7 +4,8 @@ const url = "/libs/granite/core/content/login.html";
 
 const locators = {
 	username: locate("#username").as("User Name input"),
-	password: locate("#password").as("Password input")
+	password: locate("#password").as("Password input"),
+	button: locate("//button").as("Sign In button")
 };
 
 module.exports = {
@@ -20,9 +21,8 @@ module.exports = {
 	},
 
 	signIn(username = "admin", password = "admin") {
-		this.open();
 		I.fillField(locators.username, username);
 		I.fillField(locators.password, password);
-		I.click("Sign In");
+		I.click(locators.button);
 	}
 }
