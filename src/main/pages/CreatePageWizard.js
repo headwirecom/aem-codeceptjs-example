@@ -18,6 +18,8 @@ const locators = {
 module.exports = {
 
 	validate(path = "") {
+		I.ensureUrl(url);
+
 		I.seeInCurrentUrl(url + path);
 
 		I.seeInTitle("AEM Sites");

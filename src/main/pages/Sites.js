@@ -7,6 +7,8 @@ const url = "/sites.html";
 module.exports = { ...require("./AuthorBase.js"),
 
 	validate(path = "") {
+		I.ensureUrl(url);
+
 		I.seeInCurrentUrl(url + path);
 		I.seeInTitle("AEM Sites");
 		I.see("Sites");

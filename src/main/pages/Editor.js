@@ -38,6 +38,8 @@ const locators = {
 module.exports = {
 
 	validate(path = "") {
+		I.ensureUrl(url);
+
 		I.seeInCurrentUrl(getUrl(path));
 		I.see("Edit");
 		I.see("Preview");
