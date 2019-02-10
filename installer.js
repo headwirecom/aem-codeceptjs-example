@@ -7,6 +7,6 @@ module.exports = {
 	},
 
 	getIncludes() {
-		return versioning.getIncludes();
+		return versioning.getIncludes(aem.version);
 	}
 }
