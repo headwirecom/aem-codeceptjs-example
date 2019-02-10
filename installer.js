@@ -2,11 +2,22 @@ const srcPath = "./src/";
 const basePath = srcPath + "main/";
 const pagesPath = basePath + "pages/";
 
-const page = function(name) {
+const aem = require("./aem.config.js");
+
+const pagePath = function(name) {
 	return pagesPath + name + ".js";
 };
 
-const aem = require("./aem.config.js");
+const loginPagePath = pagePath("Login");
+const startPagePath = pagePath("Start");
+
+const getLoginPage = function() {
+	return require(loginPagePath);
+};
+
+const getStartPage = function() {
+	return require(startPagePath);
+};
 
 module.exports = function() {
 	return {
@@ -17,12 +28,12 @@ module.exports = function() {
 		getIncludes() {
 			return {
 				I: basePath + "custom_steps.js",
-				loginPage: page("Login"),
-				startPage: page("Start"),
-				sitesPage: page("Sites"),
-				createPageWizardPage: page("CreatePageWizard"),
-				editorPage: page("Editor")
-			  };
+				loginPage: loginPagePath,
+				startPage: startPagePath,
+				sitesPage: pagePath("Sites"),
+				createPageWizardPage: pagePath("CreatePageWizard"),
+				editorPage: pagePath("Editor")
+			};
 		}
 	};
 }
