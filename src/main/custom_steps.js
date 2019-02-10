@@ -1,3 +1,5 @@
+const ensuringWaitTime = 10;
+
 module.exports = function() {
 	return actor({
 
@@ -31,6 +33,10 @@ module.exports = function() {
 
 		waitForAnimation() {
 			this.wait(1);
+		},
+
+		ensureUrl(path) {
+			this.waitInUrl(path, ensuringWaitTime);
 		}
 	});
 }

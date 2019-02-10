@@ -11,6 +11,8 @@ const locators = {
 module.exports = {
 
 	validate() {
+		I.ensureUrl(url);
+
 		I.seeInCurrentUrl(url);
 		I.seeInTitle("AEM Sign In");
 		I.see("Sign In");

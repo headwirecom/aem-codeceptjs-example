@@ -17,6 +17,8 @@ module.exports = { ...require("./AuthorBase.js"),
 	},
 
 	validate() {
+		I.ensureUrl(url);
+
 		I.seeInCurrentUrl(url);
 		I.seeInTitle("Start");
 
