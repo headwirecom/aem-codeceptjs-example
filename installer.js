@@ -11,14 +11,6 @@ const pagePath = function(name) {
 const loginPagePath = pagePath("Login");
 const startPagePath = pagePath("Start");
 
-const getLoginPage = function() {
-	return require(loginPagePath);
-};
-
-const getStartPage = function() {
-	return require(startPagePath);
-};
-
 module.exports = function() {
 	return {
 		getUrl() {
