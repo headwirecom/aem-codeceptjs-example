@@ -1,5 +1,5 @@
 module.exports = {
 	url: "http://localhost:4502",
-	user: "admin",
+	username: "admin",
 	password: "admin"
 }
