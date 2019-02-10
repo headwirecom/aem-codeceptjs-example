@@ -1,6 +1,7 @@
 Feature("Administering pages in AEM");
 
 Before(loginPage => {
+    loginPage.open();
     loginPage.signIn();
 });
 
