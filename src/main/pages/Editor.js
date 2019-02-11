@@ -1,5 +1,5 @@
 const I = require("../custom_steps.js")();
-const sidePanel = require("../fragments/EditorSidePanel.js");
+const sidePanel = require().fragment("EditorSidePanel");
 
 const url = "/editor.html";
 
@@ -74,12 +74,12 @@ module.exports = {
 
 	editInline(editablePath) {
 		this.invokeOnEditable(editablePath, "EDIT");
-		return require("../fragments/InlineRichtextEditor.js");
+		return require().fragment("InlineRichtextEditor");
 	},
 
 	openDialog(editablePath) {
 		this.invokeOnEditable(editablePath, "CONFIGURE");
-		return require("../fragments/Dialog.js")(editablePath);
+		return require().fragment("Dialog")(editablePath);
 	},
 
 	dragAndDrop(componentName, parsysPath) {

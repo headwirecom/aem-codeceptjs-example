@@ -1,6 +1,6 @@
 const I = require("../custom_steps.js")();
-const onboardingOverlay = require("../fragments/OnboardingOverlay.js");
-const userPopupFragment = require("../fragments/UserPopup.js");
+const onboardingOverlay = require().fragment("OnboardingOverlay");
+const userPopupFragment = require().fragment("UserPopup");
 
 const locators = {
 	userIcon: locate(".coral-Icon--userCircleColor")
