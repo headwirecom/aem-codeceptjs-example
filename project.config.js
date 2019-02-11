@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 module.exports = {
 	aem: "./aem.config.js",
 	sources: "./src/main",
