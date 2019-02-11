@@ -1,5 +1,3 @@
-const fs = require('fs')
-const aem = require('../../aem.config.js')
 const ensuringWaitTime = 10;
 
 module.exports = function() {
@@ -39,15 +37,6 @@ module.exports = function() {
 
 		ensureUrl(path) {
 			this.waitInUrl(path, ensuringWaitTime);
-		},
-
-		requireFragment(name) {
-
-			if(fs.existsSync('./'+aem.version+'/fragments/'+name+'.js')) {
-				return require('./'+aem.version+'/fragments/'+name+'.js');
-			}
-			return require('./fragments/'+name+'.js')
-
 		}
 	});
 }
