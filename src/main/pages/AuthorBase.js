@@ -2,12 +2,12 @@ const I = require("../custom_steps.js")();
 const onboardingOverlay = require("../fragments/OnboardingOverlay.js");
 const userPopupFragment = require("../fragments/UserPopup.js");
 
-const locators = {
-	userIcon: locate(".coral-Icon--userCircleColor")
-		.as("User Icon")
-};
-
 module.exports = {
+
+	locators: {
+		userIcon: locate(".coral-Icon--userCircleColor")
+			.as("User Icon")
+	},
 
 	dismissOnboarding: async function() {
         // need to wait in case the onboarding dialog shows up
@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	clickUserButton() {
-		I.click(locators.userIcon);
+		I.click(this.locators.userIcon);
 		I.waitForAnimation();
 	},
 
