@@ -1,13 +1,13 @@
 const fs = require("fs");
 const zipFolderContent = require("./lib/zip.js").zipFolderContent;
 const aemLib = require("./lib/aem.js");
-const project = require("./project.config.js");
+const project = require("./lib/project.js");
 
 module.exports = function(done) {
 	project.ensureTempFolder();
-	let zipPath = "./" + project.getContentZipFilePath();
+	let zipPath = project.getContentZipFilePath();
 	console.log("Creating test content package '" + zipPath + "'.");
-	let zip = zipFolderContent("./" + project.contentFolder);
+	let zip = zipFolderContent(project.getContentFolderPath());
 	aemLib.pipeZipToPackageFile(zip, zipPath)
 	.on("finish", function() {
 		let aem = require("./aem.config.js");
