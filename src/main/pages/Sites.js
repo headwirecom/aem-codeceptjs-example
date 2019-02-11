@@ -4,7 +4,7 @@ const createButtonFragment = require().fragment("SitesCreateButton");
 
 const url = "/sites.html";
 
-module.exports = { ...require("./AuthorBase.js"),
+module.exports = { ...require().page("AuthorBase"),
 
 	validate(path = "") {
 		I.ensureUrl(url);
