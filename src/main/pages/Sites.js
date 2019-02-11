@@ -1,10 +1,10 @@
 const I = require("../custom_steps.js")();
-const viewSwitcherFragment = require().fragment("SitesViewSwitcher");
-const createButtonFragment = require().fragment("SitesCreateButton");
+const viewSwitcherFragment = require("../fragments/SitesViewSwitcher.js");
+const createButtonFragment = require("../fragments/SitesCreateButton.js");
 
 const url = "/sites.html";
 
-module.exports = { ...require().page("AuthorBase"),
+module.exports = { ...require("./AuthorBase.js"),
 
 	validate(path = "") {
 		I.ensureUrl(url);

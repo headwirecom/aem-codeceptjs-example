@@ -10,7 +10,7 @@ const locators = {
 	}
 };
 
-module.exports = { ...require().page("AuthorBase"),
+module.exports = { ...require("./AuthorBase.js"),
 
 	containsCard(text) {
 		I.see(text, locators.navCard(text));
