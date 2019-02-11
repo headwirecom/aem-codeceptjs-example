@@ -13,7 +13,7 @@ module.exports = function(done) {
 		let aem = require("./aem.config.js");
 		console.log("Uploading the package to '" + aem.url + "'.");
 		aemLib.installPackage(zipPath, aem, function() {
-			console.log("Removing test content package.");
+			console.log("Removing test content package.\n\n");
 			fs.unlink(zipPath, error => { });
 			done();
 		});
