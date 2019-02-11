@@ -8,7 +8,8 @@ Before(loginPage => {
 const parentPagePath = "/content/we-retail/language-masters/en/tests";
 
 Scenario("Navigate to 'Create Page' wizard", async (sitesPage, createPageWizardPage) => {
-	await sitesPage.open("/content");
+	sitesPage.open("/content");
+	await sitesPage.dismissOnboarding();
 	sitesPage.switchToListView();
 	sitesPage.navigateListViewTo(["We.Retail", "Language Master", "English", "Test Content Root"]);
 	sitesPage.gotoCreatePageWizard();
