@@ -10,7 +10,7 @@ module.exports = function(done) {
 	let zip = zipFolderContent(project.getContentFolderPath());
 	aemLib.pipeZipToPackageFile(zip, zipPath)
 	.on("finish", function() {
-		let aem = require("./aem.config.js");
+		let aem = project.getAEM();
 		console.log("Uploading the package to '" + aem.url + "'.");
 		aemLib.installPackage(zipPath, aem, function() {
 			console.log("Removing test content package.\n\n");

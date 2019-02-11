@@ -1,7 +1,7 @@
 const aemLib = require("./lib/aem.js");
 
 const project = require("./project.config.js");
-const aem = require("./aem.config.js");
+const aem = project.getAEM();
 
 module.exports = function(done) {
 	console.log("\n\nDeleting package from AEM instance.");
