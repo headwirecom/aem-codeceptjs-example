@@ -9,9 +9,10 @@ const locators = {
 
 module.exports = {
 
-	dismissOnboarding() {
-		onboardingOverlay.dismiss();
-		I.wait(1);
+	dismissOnboarding: async function() {
+        // need to wait in case the onboarding dialog shows up
+        I.wait(1);
+		return onboardingOverlay.dismiss();
 	},
 
 	clickUserButton() {

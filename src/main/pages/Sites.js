@@ -15,8 +15,8 @@ module.exports = { ...require("./AuthorBase.js"),
 	},
 
 	open(path = "") {
-		I.amOnPage(url + path);
-		this.dismissOnboarding();
+        I.amOnPage(url + path);
+        I.seeInTitle("AEM Sites");
 	},
 
 	switchToListView() {

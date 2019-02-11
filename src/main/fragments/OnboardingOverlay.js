@@ -1,14 +1,21 @@
 const I = require("../custom_steps.js")();
 
-module.exports = {
+const locators = {
+	popover: locate(".granite-shell-onboarding-popover")
+		.as("Onboarding Popover"),
+	button: locate(".granite-shell-onboarding-popover button")
+		.as("Close Onboarding Button")
+};
 
-	dismiss() {
-		// hack to dismiss the onboarding dialog if it shows up
-		I.executeScript(function(done) {
-			let button = $(".granite-shell-onboarding-popover button")[0];
-			if(button) {
-				button.click();
-			}
-		});
+module.exports = {
+	dismiss: async function() {
+        return new Promise(async function(resolve) {
+            let count = await I.grabNumberOfVisibleElements(locators.popover);
+            if (count > 0) {
+				I.click(locators.button);
+            }
+
+            resolve();
+        });
 	}
 }

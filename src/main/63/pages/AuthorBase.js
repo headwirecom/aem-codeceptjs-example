@@ -1,5 +1,5 @@
 module.exports = {
 
-    ...require('../../pages/AuthorBase.js')
+    ...require("../../pages/AuthorBase.js")
 
 }
