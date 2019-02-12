@@ -35,5 +35,5 @@ Scenario("Inline Editor", editorPage => {
 
 Scenario("Drag and Drop", editorPage => {
 	editorPage.open(pagePath);
-	editorPage.dragAndDrop("Articles List", parsysPath);
+	editorPage.dragAndDrop("Form Container", parsysPath);
 });

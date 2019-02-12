@@ -8,7 +8,7 @@ const locators = {
 			.as(title + " tab");
 	},
 	component: function(title) {
-		return locate("//coral-columnview-item[@data-title='" + title + "']")
+		return locate("//*[@data-title='" + title + "']")
 			.as("Component '" + title + "'");
 	}
 };
