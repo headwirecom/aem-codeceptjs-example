@@ -1,11 +1,11 @@
 Feature("Navigation in Start page");
 
-Before((loginPage, startPage) => {
+Before(async (loginPage, startPage) => {
 	startPage.open();
-    loginPage.signIn();
+    await loginPage.signIn();
 });
 
-Scenario("Enter Sites page", (startPage, sitesPage) => {
-	startPage.gotoSites();
-	sitesPage.validate();
+Scenario("Enter Sites page", async (startPage, sitesPage) => {
+	await startPage.gotoSites();
+	await sitesPage.validate();
 });

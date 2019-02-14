@@ -37,11 +37,11 @@ module.exports = { ...require("./AuthorBase.js"),
 		I.amOnPage(url);
 	},
 
-	clickCard(text) {
-		I.click(locators.navCard(text));
+	async clickCard(text) {
+		return I.click(locators.navCard(text));
 	},
 
-	gotoSites() {
-		this.clickCard("Sites");
+	async gotoSites() {
+		return this.clickCard("Sites");
 	}
 }

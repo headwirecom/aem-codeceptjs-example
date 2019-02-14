@@ -6,12 +6,12 @@ const url = "/sites.html";
 
 module.exports = { ...require("./AuthorBase.js"),
 
-	validate(path = "") {
+	async validate(path = "") {
 		I.ensureUrl(url);
 
 		I.seeInCurrentUrl(url + path);
 		I.seeInTitle("AEM Sites");
-		I.see("Sites");
+		return I.see("Sites");
 	},
 
 	open(path = "") {
