@@ -9,8 +9,8 @@ const locators = {
 
 module.exports = {
 
-	gotoCreatePageWizard() {
+	async gotoCreatePageWizard() {
 		I.click("Create", locators.root);
-		I.click("Page", locators.createPageItem);
+		return I.click("Page", locators.createPageItem);
 	}
 }

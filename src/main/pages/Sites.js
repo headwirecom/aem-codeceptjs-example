@@ -19,19 +19,19 @@ module.exports = { ...require("./AuthorBase.js"),
         I.seeInTitle("AEM Sites");
 	},
 
-	switchToListView() {
-		viewSwitcherFragment.switchToListView();
+	async switchToListView() {
+		return viewSwitcherFragment.switchToListView();
 	},
 
-	navigateListViewTo(pageTitles) {
-		for(let i = 0; i < pageTitles.length; i++) {
+	async navigateListViewTo(pageTitles) {
+		for (let i = 0; i < pageTitles.length; i++) {
 			let title = pageTitles[i];
 			I.see(title);
 			I.click(title);
 		}
 	},
 
-	gotoCreatePageWizard() {
-		createButtonFragment.gotoCreatePageWizard();
+	async gotoCreatePageWizard() {
+		return createButtonFragment.gotoCreatePageWizard();
 	}
 }

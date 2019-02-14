@@ -1,8 +1,8 @@
 Feature("Administering pages in AEM");
 
-Before(loginPage => {
+Before(async loginPage => {
     loginPage.open();
-    loginPage.signIn();
+    await loginPage.signIn();
 });
 
 const parentPagePath = "/content/we-retail/language-masters/en/tests";
@@ -10,14 +10,14 @@ const parentPagePath = "/content/we-retail/language-masters/en/tests";
 Scenario("Navigate to 'Create Page' wizard", async (sitesPage, createPageWizardPage) => {
 	sitesPage.open("/content");
 	await sitesPage.dismissOnboarding();
-	sitesPage.switchToListView();
-	sitesPage.navigateListViewTo(["We.Retail", "Language Master", "English", "Test Content Root"]);
-	sitesPage.gotoCreatePageWizard();
+	await sitesPage.switchToListView();
+	await sitesPage.navigateListViewTo(["We.Retail", "Language Master", "English", "Test Content Root"]);
+	await sitesPage.gotoCreatePageWizard();
 	createPageWizardPage.validate(parentPagePath);
 });
 
-Scenario("Create 'My Page' test page", createPageWizardPage => {
+Scenario("Create 'My Page' test page", async createPageWizardPage => {
 	createPageWizardPage.open(parentPagePath);
-	createPageWizardPage.create("Content Page", "My Page", "my-page");
+	await createPageWizardPage.create("Content Page", "My Page", "my-page");
 	createPageWizardPage.validateCreated();
 });

@@ -35,12 +35,12 @@ module.exports = {
 		I.amOnPage(url + path);
 	},
 
-	create(templateName, title, name = "") {
-		I.click(locators.template(templateName));
-		I.click("Next");
+	async create(templateName, title, name = "") {
+		await I.click(locators.template(templateName));
+		await I.click("Next");
 		I.fillField(locators.pageTitleInput, title);
 		I.fillField(locators.pageNameInput, name);
-		I.pressEnter();
+		return I.pressEnter();
 	},
 
 	validateCreated() {

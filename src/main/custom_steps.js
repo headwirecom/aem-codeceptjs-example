@@ -1,7 +1,9 @@
-const ensuringWaitTime = 10;
-
 module.exports = function() {
 	return actor({
+
+		ensureUrl(path) {
+			this.waitInUrl(path, 2);
+		},
 
 		type(text) {
 			for (var i = 0; i < text.length; i++) {
@@ -29,14 +31,6 @@ module.exports = function() {
 
 		pressDown(times = 1) {
 			this.press("ArrowDown", times);
-		},
-
-		waitForAnimation() {
-			this.wait(1);
-		},
-
-		ensureUrl(path) {
-			this.waitInUrl(path, ensuringWaitTime);
 		}
 	});
 }

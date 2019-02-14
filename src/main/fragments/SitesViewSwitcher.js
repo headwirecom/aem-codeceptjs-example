@@ -15,17 +15,17 @@ const locators = {
 
 module.exports = {
 
-	clickSwitchButton() {
+	async clickSwitchButton() {
 		I.seeElement(locators.root, 2);
-		I.click(locators.root);
+		return I.click(locators.root);
 	},
 
-	switchTo(text) {
-		this.clickSwitchButton();
-		I.click(locators.optionButton(text));
+	async switchTo(text) {
+		await this.clickSwitchButton();
+		return I.click(locators.optionButton(text));
 	},
 
-	switchToListView() {
-		this.switchTo("List View");
+	async switchToListView() {
+		return this.switchTo("List View");
 	}
 }
