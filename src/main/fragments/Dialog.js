@@ -23,12 +23,12 @@ module.exports = function(path) {
 	};
 
 	return {
-		submit() {
-			I.click(locators.submit);
+		async submit() {
+			return I.click(locators.submit);
 		},
 
-		set(name, value) {
-			I.fillField(inputLocator(name), value);
+		async set(name, value) {
+			return I.fillField(inputLocator(name), value);
 		}
 	}
 }

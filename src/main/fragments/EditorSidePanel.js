@@ -15,20 +15,20 @@ const locators = {
 
 module.exports = {
 
-	toggleVisible() {
-		I.click(locators.sidePanelToggle);
+	async toggleVisible() {
+		return I.click(locators.sidePanelToggle);
 	},
 
-	clickTab(title) {
-		I.click(locators.tab(title));
+	async clickTab(title) {
+		return I.click(locators.tab(title));
 	},
 
-	clickAssetsTab() {
-		this.clickTab("Assets");
+	async clickAssetsTab() {
+		return this.clickTab("Assets");
 	},
 
-	clickComponentsTab() {
-		this.clickTab("Components");
+	async clickComponentsTab() {
+		return this.clickTab("Components");
 	},
 
 	locateComponent(name) {

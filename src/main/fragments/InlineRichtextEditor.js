@@ -12,28 +12,28 @@ const locators = {
 
 module.exports = {
 
-	clickButton(actionName) {
-		I.click(actionButton(actionName, actionName));
+	async clickButton(actionName) {
+		return I.click(actionButton(actionName, actionName));
 	},
 
-	save() {
-		I.click(locators.save);
+	async save() {
+		return I.click(locators.save);
 	},
 	
-	clickFormatButton() {
-		I.click(locators.format);
+	async clickFormatButton() {
+		return I.click(locators.format);
 	},
 	
-	clickFormatBoldButton() {
-		I.click(locators.boldFont);
+	async clickFormatBoldButton() {
+		return I.click(locators.boldFont);
 	},
 	
-	toggleBold() {
-		this.clickFormatButton();
-		this.clickFormatBoldButton();
+	async toggleBold() {
+		await this.clickFormatButton();
+		return this.clickFormatBoldButton();
 	},
 	
-	type(text) {
-		I.type(text);
+	async type(text) {
+		return I.type(text);
 	}
 }

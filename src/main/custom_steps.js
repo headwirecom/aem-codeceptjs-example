@@ -1,36 +1,24 @@
 module.exports = function() {
 	return actor({
 
-		ensureUrl(path) {
-			this.waitInUrl(path, 2);
+		async ensureUrl(path) {
+			return this.waitInUrl(path, 2);
 		},
 
-		type(text) {
+		async type(text) {
 			for (var i = 0; i < text.length; i++) {
-			  this.pressKey(text.charAt(i));
+				await this.pressKey(text.charAt(i));
 			}
 		},
 
-		press(key, times = 1) {
+		async press(key, times = 1) {
 			for (var i = 0; i < times; i++) {
-			  this.pressKey(key);
+				await this.pressKey(key);
 			}
 		},
 
-		pressEnter(times = 1) {
-			this.press("Enter", times);
-		},
-
-		pressTab(times = 1) {
-			this.press("Tab", times);
-		},
-
-		pressRight(times = 1) {
-			this.press("ArrowRight", times);
-		},
-
-		pressDown(times = 1) {
-			this.press("ArrowDown", times);
+		async pressEnter(times = 1) {
+			return this.press("Enter", times);
 		}
 	});
 }

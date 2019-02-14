@@ -8,7 +8,7 @@ const locators = {
 };
 
 module.exports = {
-	dismiss: async function() {
+	async dismiss() {
         return new Promise(async function(resolve) {
             let count = await I.grabNumberOfVisibleElements(locators.popover);
             if (count > 0) {

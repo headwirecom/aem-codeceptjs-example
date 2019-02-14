@@ -1,8 +1,8 @@
 Feature("Editing pages in AEM");
 
-Before(loginPage => {
+Before(async loginPage => {
     loginPage.open();
-    loginPage.signIn();
+    await loginPage.signIn();
 });
 
 const pagePath = "/content/we-retail/language-masters/en/tests/editing-pages";
@@ -10,30 +10,35 @@ const parsysPath = pagePath + "/jcr:content/root/responsivegrid";
 const titlePath = parsysPath + "/title";
 const textPath = parsysPath + "/text";
 
-Scenario("Check whether the page exists", editorPage => {
+Scenario("Check whether the page exists", async editorPage => {
 	editorPage.open(pagePath);
-	editorPage.validate();
+	await editorPage.validate();
 });
 
-Scenario("Add Title", editorPage => {
+Scenario("Add Title", async editorPage => {
 	editorPage.open(pagePath);
-	editorPage.addComponent("Title", parsysPath);
-	let dialog = editorPage.openDialog(titlePath);
+	await editorPage.addComponent("Title", parsysPath);
+});
+
+Scenario("Edit Title", async editorPage => {
+	editorPage.open(pagePath);
+	await editorPage.openDialog(titlePath);
+	let dialog = editorPage.getDialog(titlePath);
 	dialog.set("jcr:title", "My Custom Title");
-	dialog.submit();
+	await dialog.submit();
 });
 
-Scenario("Inline Editor", editorPage => {
+Scenario("Inline Editor", async editorPage => {
 	editorPage.open(pagePath);
-	editorPage.addComponent("Text", parsysPath);
-	let inlineEditor = editorPage.editInline(textPath);
-	inlineEditor.type("This text has no formatting. ");
-	inlineEditor.toggleBold();
-	inlineEditor.type("This text has bold formatting.");
-	inlineEditor.save();
+	await editorPage.openInlineEditor(textPath);
+	let inlineEditor = editorPage.getInlineEditor();
+	await inlineEditor.type("This text has no formatting. ");
+	await inlineEditor.toggleBold();
+	await inlineEditor.type("This text has bold formatting.");
+	await inlineEditor.save();
 });
 
-Scenario("Drag and Drop", editorPage => {
+Scenario("Drag and Drop", async editorPage => {
 	editorPage.open(pagePath);
-	editorPage.dragAndDrop("Form Container", parsysPath);
+	await editorPage.dragAndDrop("Text", parsysPath);
 });

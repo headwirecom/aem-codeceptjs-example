@@ -37,59 +37,64 @@ const locators = {
 
 module.exports = {
 
-	validate(path = "") {
+	async validate(path = "") {
 		I.ensureUrl(url);
 
 		I.seeInCurrentUrl(getUrl(path));
 		I.see("Edit");
-		I.see("Preview");
+		return I.see("Preview");
 	},
 
 	open(path = "") {
 		I.amOnPage(getUrl(path));
 	},
 
-	clickEditable(path) {
-		I.click(locators.editable(path));
+	async clickEditable(path) {
+		return I.click(locators.editable(path));
 	},
 
-	clickActionButton(actionName) {
-		I.click(locators.button(actionName));
+	async clickActionButton(actionName) {
+		return I.click(locators.button(actionName));
 	},
 
-	invokeOnEditable(editablePath, actionName) {
-		this.clickEditable(editablePath);
-		this.clickActionButton(actionName);
+	async invokeOnEditable(editablePath, actionName) {
+		await this.clickEditable(editablePath);
+		return this.clickActionButton(actionName);
 	},
 
-	openInsertDialog(parsysPath) {
-		this.invokeOnEditable(getParsysDataPath(parsysPath), "INSERT");
+	async openInsertDialog(parsysPath) {
+		return this.invokeOnEditable(getParsysDataPath(parsysPath), "INSERT");
 	},
 
-	addComponent(componentName, parsysPath) {
-		this.openInsertDialog(parsysPath);
-		I.click(locators.component(componentName));
-		I.wait(1);
+	async addComponent(componentName, parsysPath) {
+		await this.openInsertDialog(parsysPath);
+		return I.click(locators.component(componentName));
 	},
 
-	editInline(editablePath) {
-		this.invokeOnEditable(editablePath, "EDIT");
+	async openInlineEditor(editablePath) {
+		return this.invokeOnEditable(editablePath, "EDIT");
+	},
+
+	getInlineEditor() {
 		return require("../fragments/InlineRichtextEditor.js");
 	},
 
-	openDialog(editablePath) {
-		this.invokeOnEditable(editablePath, "CONFIGURE");
+	async openDialog(editablePath) {
+		return this.invokeOnEditable(editablePath, "CONFIGURE");
+	},
+
+	getDialog(editablePath) {
 		return require("../fragments/Dialog.js")(editablePath);
 	},
 
-	dragAndDrop(componentName, parsysPath) {
-		sidePanel.toggleVisible();
-		sidePanel.clickComponentsTab();
+	async dragAndDrop(componentName, parsysPath) {
+		await sidePanel.toggleVisible();
+		await sidePanel.clickComponentsTab();
 		let componentLocator = sidePanel.waitForComponent(componentName);
 		let parsysLocator = locators.editable(getParsysDataPath(parsysPath));
 		I.waitForVisible(parsysLocator);
 		I.dragAndDrop(componentLocator, parsysLocator);
-		sidePanel.clickAssetsTab();
-		sidePanel.toggleVisible();
+		await sidePanel.clickAssetsTab();
+		await sidePanel.toggleVisible();
 	}
 }
