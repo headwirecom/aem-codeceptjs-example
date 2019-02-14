@@ -10,21 +10,21 @@ const locators = {
 
 module.exports = {
 
-	validate() {
+	async validate() {
 		I.ensureUrl(url);
 
 		I.seeInCurrentUrl(url);
 		I.seeInTitle("AEM Sign In");
-		I.see("Sign In");
+		return I.see("Sign In");
 	},
 
 	open() {
 		I.amOnPage(url);
 	},
 
-	signIn(username = "admin", password = "admin") {
-		I.fillField(locators.username, username);
-		I.fillField(locators.password, password);
-		I.click(locators.button);
+	async signIn(username = "admin", password = "admin") {
+		await I.fillField(locators.username, username);
+		await I.fillField(locators.password, password);
+		return I.click(locators.button);
 	}
 }

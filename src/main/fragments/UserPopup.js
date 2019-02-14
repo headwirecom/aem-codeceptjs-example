@@ -12,7 +12,7 @@ module.exports = {
 		I.see(name);
 	},
 
-	signOut() {
-		I.click(locators.signOut);
+	async signOut() {
+		return I.click(locators.signOut);
 	}
 }

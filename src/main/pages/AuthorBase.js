@@ -9,25 +9,22 @@ module.exports = {
 			.as("User Icon")
 	},
 
-	dismissOnboarding: async function() {
-        // need to wait in case the onboarding dialog shows up
-        I.wait(1);
+	async dismissOnboarding() {
 		return onboardingOverlay.dismiss();
 	},
 
-	clickUserButton() {
-		I.click(this.locators.userIcon);
-		I.waitForAnimation();
+	async clickUserButton() {
+		return I.click(this.locators.userIcon);
 	},
 
-	checkUser(name = "Administrator") {
-		this.clickUserButton();
-		userPopupFragment.checkUser(name);
-		this.clickUserButton();
+	async checkUser(name = "Administrator") {
+		await this.clickUserButton();
+		await userPopupFragment.checkUser(name);
+		return this.clickUserButton();
 	},
 
-	signOut() {
-		this.clickUserButton();
-		userPopupFragment.signOut();
+	async signOut() {
+		await this.clickUserButton();
+		return userPopupFragment.signOut();
 	}
 }

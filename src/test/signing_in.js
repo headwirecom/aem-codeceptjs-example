@@ -4,14 +4,14 @@ Before(loginPage => {
 	loginPage.open();
 });
 
-Scenario("Open 'Sign In' page", loginPage => {
-	loginPage.validate();
+Scenario("Open 'Sign In' page", async loginPage => {
+	await loginPage.validate();
 });
 
-Scenario("Enter Start page", (loginPage, startPage) => {
-	loginPage.signIn();
+Scenario("Enter Start page", async (loginPage, startPage) => {
+	await loginPage.signIn();
 	startPage.validate();
 	startPage.checkUser();
-	startPage.signOut();
+	await startPage.signOut();
 	loginPage.validate();
 });
